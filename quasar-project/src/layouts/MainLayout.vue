@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Staff Whereabouts
+          Where abouts
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

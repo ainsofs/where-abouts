@@ -1,6 +1,6 @@
-# Staff Whereabouts (staff-kanaban)
+# Where-abouts App (where-abouts)
 
-Kanban board of Staff whereabouts
+Kanban board of where-abouts
 
 ## Install the dependencies
 ```bash

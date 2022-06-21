@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-md">
-    <div class="q-pb-md text-caption">Update staff where abouts by dragging their names to the appropriate area.</div>
+    <div class="q-pb-md text-caption">Update peoples where abouts by dragging their names to the appropriate area.</div>
 
     <div class="board row q-col-gutter-md">
       <!-- in the office -->
@@ -11,6 +11,8 @@
           body-css="bg-green-1"
           :list="inTheOffice"
           badge-colour="green"
+          @add="add('in-the-office', $event)"
+          @remove="remove('in-the-office', $event)"
           />
       </div>
       <!-- working remotely -->
@@ -21,6 +23,8 @@
           body-css="bg-blue-1"
           :list="workingRemotely"
           badge-colour="blue"
+          @add="add('working-remotely', $event)"
+          @remove="remove('working-remotely', $event)"
           />
       </div>
       <!-- Out of office -->
@@ -31,6 +35,8 @@
           body-css="bg-blue-grey-1"
           :list="outOfOffice"
           badge-colour="blue-grey-5"
+          @add="add('out-of-office', $event)"
+          @remove="remove('out-of-office', $event)"
           />
       </div>
       <!-- On Leave -->
@@ -41,6 +47,8 @@
           body-css="bg-grey-1"
           :list="onLeave"
           badge-colour="grey"
+          @add="add('on-leave', $event)"
+          @remove="remove('on-leave', $event)"
           />
       </div>
     </div>
@@ -62,5 +70,15 @@ const workingRemotely = ref(store.getStaffWorkingRemotely)
 const outOfOffice = ref(store.getStaffOutOfOffice)
 const onLeave = ref(store.getStaffOnLeave)
 
+function add(status, element) {
+  element.status = status
+  store.updateStaff(element.id, element)
+}
+function remove(status, element) {
+  if (element.status === status) {
+    element.status = ''
+    store.updateStaff(element.id, element)
+  }
+}
 </script>
 

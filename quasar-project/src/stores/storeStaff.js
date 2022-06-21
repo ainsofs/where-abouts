@@ -1,4 +1,8 @@
 import { defineStore } from 'pinia'
+import {
+  setAddedDate,
+  setUpdatedDate,
+} from "src/functions/functions-set-audit-date"
 
 export const useStoreStaff = defineStore("useStoreStaff", {
   state: () => ({
@@ -103,5 +107,15 @@ export const useStoreStaff = defineStore("useStoreStaff", {
 
       return filter
     },
+    getStaff(id) {
+      return this.staff.filter((staff) => staff.id === id)
+    },
+    updateStaff(id, payload) {
+      let staff = this.getStaff(id)
+      if (staff) {
+        staff = setUpdatedDate(payload, staff)
+        console.log('success')
+      }
+    }
   },
 })
