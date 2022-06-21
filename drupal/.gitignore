@@ -1,0 +1,9 @@
+# Ignore paths that contain user-generated content.
+web/*/settings.local.php
+web/sites/*/files
+web/sites/*/private
+acquia-file
+/log
+web/sites/default/settings.local.php
+
+
