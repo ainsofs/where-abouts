@@ -9,6 +9,8 @@
     <q-tabs
       v-model="tab"
       class="text-teal"
+      vertical
+      dense
     >
       <q-tab name="in-the-office" class="text-green" icon="work" label="In the Office" />
       <q-tab name="working-remotely" class="text-blue" icon="work_outline" label="W. Remotely" />
@@ -17,9 +19,11 @@
     </q-tabs>
   </q-card-section>
 
-  <q-card-actions align="right" class="text-primary">
+  <q-separator />
+
+  <q-card-actions align="right" class="text-grey">
     <q-btn flat label="Cancel" v-close-popup />
-    <q-btn flat label="Update" v-close-popup />
+    <q-btn @click="update" flat label="Update" class="text-primary" icon="save" />
   </q-card-actions>
 </q-card>
 </template>
@@ -29,6 +33,13 @@ import { ref } from 'vue'
 import KanbanItem from 'components/Kanban/KanbanItem.vue'
 
 const props = defineProps(['element'])
+const emit = defineEmits(['update'])
 
 const tab = ref(props.element.status)
+
+function update() {
+  let status = tab.value
+  emit('update', status)
+}
+
 </script>

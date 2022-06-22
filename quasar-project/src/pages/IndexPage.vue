@@ -63,13 +63,13 @@
     </div>
 
     <q-dialog v-model="prompt" persistent>
-      <set-status-modal :element="element" />
+      <set-status-modal :element="element" @update="update" />
     </q-dialog>
   </q-page>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useStoreStaff } from 'stores/storeStaff'
 import KanbanList from 'components/Kanban/KanbanList.vue'
 import SetStatusModal from 'components/Kanban/Modals/SetStatusModal.vue'
@@ -94,6 +94,21 @@ function remove(status, element) {
   if (element.status === status) {
     element.status = ''
     store.updateStaff(element.id, element)
+  }
+}
+function update(status) {
+  let el = element.value
+  if (el.status !== status) {
+    // its changed
+    remove(el.status, el)
+    add(status, el)
+
+    inTheOffice.value = store.getStaffInTheOffice
+    workingRemotely.value = store.getStaffWorkingRemotely
+    outOfOffice.value = store.getStaffOutOfOffice
+    onLeave.value = store.getStaffOnLeave
+
+    prompt.value = false
   }
 }
 function showModal(event) {

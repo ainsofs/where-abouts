@@ -31,9 +31,12 @@
 </template>
 
 <script setup>
-import draggable from 'vuedraggable'
+import { useQuasar } from 'quasar'
 import { computed, ref } from 'vue'
+import draggable from 'vuedraggable'
 import KanbanItem from 'components/Kanban/KanbanItem.vue'
+
+const $q = useQuasar()
 
 const props = defineProps(['title', 'icon', 'headerCss', 'bodyCss', 'list', 'badgeColour'])
 const emit = defineEmits(['add', 'remove', 'item-click'])
@@ -47,16 +50,13 @@ function click(element) {
 }
 
 function log(evt) {
-  // window.console.log(evt, props.title)
   const key = Object.keys(evt)[0]
   switch (key) {
     case 'added':
       emit('add', evt.added.element)
-      // console.log(evt.added.element)
       break
     case 'removed':
       emit('remove', evt.removed.element)
-      // console.log(evt.removed.element)
       break
     default:
       // do nothing
@@ -69,7 +69,7 @@ const dragOptions = computed(() => {
   return {
     animation: 200,
     group: "description",
-    disabled: false,
+    disabled: $q.platform.is.mobile,
     ghostClass: "ghost"
   }
 })
