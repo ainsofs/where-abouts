@@ -1,6 +1,6 @@
 # Where abouts App
 
-An app to track peoples whereabouts. Built with Quasar.
+An app to track peoples where abouts. Built with Quasar.
 
 **Getting started**
 
