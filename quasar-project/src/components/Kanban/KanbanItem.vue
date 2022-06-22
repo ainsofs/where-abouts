@@ -15,7 +15,7 @@
   </q-item-section>
 
   <q-item-section side>
-    <q-icon name="chat_bubble" color="green" />
+    <q-icon name="chat_bubble" color="secondary" />
   </q-item-section>
 </q-item>
 </template>

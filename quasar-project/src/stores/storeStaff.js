@@ -114,7 +114,7 @@ export const useStoreStaff = defineStore("useStoreStaff", {
       let staff = this.getStaff(id)
       if (staff) {
         staff = setUpdatedDate(payload, staff)
-        console.log('success')
+        console.log('updated')
       }
     }
   },

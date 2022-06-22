@@ -7,7 +7,7 @@
         <q-badge v-if="listLength" rounded align="middle" color="white" :text-color="props.badgeColour">{{ listLength }}</q-badge>
       </q-toolbar-title>
     </q-toolbar>
-    <q-list bordered :class="props.bodyCss">
+    <q-list bordered class="bg-grey-1">
       <draggable
         class="list-group"
         :list="props.list"
@@ -39,6 +39,7 @@ import KanbanItem from 'components/Kanban/KanbanItem.vue'
 const $q = useQuasar()
 
 const props = defineProps(['title', 'icon', 'headerCss', 'bodyCss', 'list', 'badgeColour'])
+// bodyCss is unused now
 const emit = defineEmits(['add', 'remove', 'item-click'])
 
 const listLength  = computed(() => {

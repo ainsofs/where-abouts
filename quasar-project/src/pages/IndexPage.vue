@@ -11,7 +11,7 @@
           icon="work"
           header-css="bg-green text-white"
           body-css="bg-green-1"
-          :list="inTheOffice"
+          :list="store.getStaffInTheOffice"
           badge-colour="green"
           @add="add('in-the-office', $event)"
           @remove="remove('in-the-office', $event)"
@@ -25,7 +25,7 @@
           icon="work_outline"
           header-css="bg-blue text-white"
           body-css="bg-blue-1"
-          :list="workingRemotely"
+          :list="store.getStaffWorkingRemotely"
           badge-colour="blue"
           @add="add('working-remotely', $event)"
           @remove="remove('working-remotely', $event)"
@@ -39,7 +39,7 @@
           icon="comments_disabled"
           header-css="bg-blue-grey-5 text-white"
           body-css="bg-blue-grey-1"
-          :list="outOfOffice"
+          :list="store.getStaffOutOfOffice"
           badge-colour="blue-grey-5"
           @add="add('out-of-office', $event)"
           @remove="remove('out-of-office', $event)"
@@ -53,7 +53,7 @@
           icon="beach_access"
           header-css="bg-grey text-white"
           body-css="bg-grey-1"
-          :list="onLeave"
+          :list="store.getStaffOnLeave"
           badge-colour="grey"
           @add="add('on-leave', $event)"
           @remove="remove('on-leave', $event)"
@@ -80,13 +80,8 @@ const store = useStoreStaff()
 
 const spacingCss = "col-xs-12 col-sm-6 col-lg-3"
 
-const inTheOffice = ref(store.getStaffInTheOffice)
-const workingRemotely = ref(store.getStaffWorkingRemotely)
-const outOfOffice = ref(store.getStaffOutOfOffice)
-const onLeave = ref(store.getStaffOnLeave)
-
 const prompt = ref(false)
-const element = ref(inTheOffice.value[0])
+const element = ref(null)
 const todaysDate = computed(() => {
   const timeStamp = Date.now()
   return date.formatDate(timeStamp, 'DD MMMM, YYYY')
@@ -108,11 +103,6 @@ function update(status) {
     // its changed
     remove(el.status, el)
     add(status, el)
-
-    inTheOffice.value = store.getStaffInTheOffice
-    workingRemotely.value = store.getStaffWorkingRemotely
-    outOfOffice.value = store.getStaffOutOfOffice
-    onLeave.value = store.getStaffOnLeave
   }
 
   prompt.value = false

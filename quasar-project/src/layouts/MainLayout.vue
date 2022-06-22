@@ -21,6 +21,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
+      width="150"
     >
       <q-list>
         <q-item-label
