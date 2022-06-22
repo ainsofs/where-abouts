@@ -1,0 +1,19 @@
+uuid: 0d244870-8f7c-4df3-b9b8-5977f7ee4139
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.wb_people
+  module:
+    - user
+id: node.wb_people.default
+targetEntityType: node
+bundle: wb_people
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

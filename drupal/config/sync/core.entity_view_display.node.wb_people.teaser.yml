@@ -1,0 +1,20 @@
+uuid: 9e93e597-3ddf-41c3-94f2-15923c0bf73e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.wb_people
+  module:
+    - user
+id: node.wb_people.teaser
+targetEntityType: node
+bundle: wb_people
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

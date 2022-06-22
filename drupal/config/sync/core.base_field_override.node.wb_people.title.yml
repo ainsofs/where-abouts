@@ -1,0 +1,18 @@
+uuid: 9f3154c3-c0bd-4270-8f29-0f637591dba1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.wb_people
+id: node.wb_people.title
+field_name: title
+entity_type: node
+bundle: wb_people
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
