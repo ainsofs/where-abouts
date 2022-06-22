@@ -1,16 +1,21 @@
 <template>
 <q-card style="min-width: 350px">
-  <q-card-section>
-    <div class="text-h6">Set Status</div>
+  <q-card-section class="text-h6 ">
+    Update Status
+  </q-card-section>
+
+
+  <q-card-section class="q-py-none">
     <kanban-item :element="props.element" />
   </q-card-section>
 
-  <q-card-section class="q-pt-none">
+  <q-card-section>
     <q-tabs
       v-model="tab"
       class="text-teal"
-      vertical
       dense
+      :vertical="$q.platform.is.mobile"
+      active-color="accent"
     >
       <q-tab name="in-the-office" class="text-green" icon="work" label="In the Office" />
       <q-tab name="working-remotely" class="text-blue" icon="work_outline" label="W. Remotely" />
@@ -29,8 +34,11 @@
 </template>
 
 <script setup>
+import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import KanbanItem from 'components/Kanban/KanbanItem.vue'
+
+const $q = useQuasar()
 
 const props = defineProps(['element'])
 const emit = defineEmits(['update'])

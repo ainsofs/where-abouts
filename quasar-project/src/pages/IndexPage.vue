@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-md">
-    <div class="q-pb-md text-weight-medium">22 June, 2022</div>
-    <div class="q-pb-md text-caption">Update peoples where abouts by dragging their names to the appropriate area.</div>
+    <div class="q-pb-md text-weight-medium">For {{ todaysDate }}</div>
+    <div class="q-pb-md text-caption">Update peoples where abouts by dragging their names to the appropriate area (desktop only). You can also click on them to select a status. </div>
 
     <div class="board row q-col-gutter-md">
       <!-- in the office -->
@@ -70,7 +70,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { date } from 'quasar'
 import { useStoreStaff } from 'stores/storeStaff'
+
 import KanbanList from 'components/Kanban/KanbanList.vue'
 import SetStatusModal from 'components/Kanban/Modals/SetStatusModal.vue'
 
@@ -85,6 +87,10 @@ const onLeave = ref(store.getStaffOnLeave)
 
 const prompt = ref(false)
 const element = ref(inTheOffice.value[0])
+const todaysDate = computed(() => {
+  const timeStamp = Date.now()
+  return date.formatDate(timeStamp, 'DD MMMM, YYYY')
+})
 
 function add(status, element) {
   element.status = status
@@ -107,9 +113,9 @@ function update(status) {
     workingRemotely.value = store.getStaffWorkingRemotely
     outOfOffice.value = store.getStaffOutOfOffice
     onLeave.value = store.getStaffOnLeave
-
-    prompt.value = false
   }
+
+  prompt.value = false
 }
 function showModal(event) {
   element.value = event
