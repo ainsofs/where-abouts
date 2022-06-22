@@ -1,9 +1,10 @@
 <template>
   <div class="rounded-borders" >
     <q-toolbar :class="props.headerCss">
-      <q-toolbar-title><span>{{ props.title }}
+      <q-toolbar-title>
+        <q-icon :name="props.icon" class="q-pb-xs" />
+        {{ props.title }}
         <q-badge v-if="listLength" rounded align="middle" color="white" :text-color="props.badgeColour">{{ listLength }}</q-badge>
-      </span>
       </q-toolbar-title>
     </q-toolbar>
     <q-list bordered :class="props.bodyCss">
@@ -22,25 +23,7 @@
         @end="drag = false"
       >
         <template #item="{ element }">
-          <q-item class="q-my-sm" clickable v-ripple>
-            <q-item-section avatar>
-              <q-avatar v-if="!element.avatar" color="primary" text-color="white">
-                {{ element.letter }}
-              </q-avatar>
-              <q-avatar v-if="element.avatar">
-                <img :src="`https://cdn.quasar.dev/img/${element.avatar}`">
-              </q-avatar>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label>{{ element.name }}</q-item-label>
-              <q-item-label caption lines="1">{{ element.email }}</q-item-label>
-            </q-item-section>
-
-            <q-item-section side>
-              <q-icon name="chat_bubble" color="green" />
-            </q-item-section>
-            </q-item>
+          <kanban-item :element="element" @click="click(element)" />
         </template>
       </draggable>
     </q-list>
@@ -50,13 +33,18 @@
 <script setup>
 import draggable from 'vuedraggable'
 import { computed, ref } from 'vue'
+import KanbanItem from 'components/Kanban/KanbanItem.vue'
 
-const props = defineProps(['title', 'headerCss', 'bodyCss', 'list', 'badgeColour'])
-const emit = defineEmits(['add', 'remove'])
+const props = defineProps(['title', 'icon', 'headerCss', 'bodyCss', 'list', 'badgeColour'])
+const emit = defineEmits(['add', 'remove', 'item-click'])
 
 const listLength  = computed(() => {
   return props.list.length
 })
+
+function click(element) {
+  emit('item-click', element)
+}
 
 function log(evt) {
   // window.console.log(evt, props.title)
