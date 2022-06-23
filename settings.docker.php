@@ -124,3 +124,8 @@ $config['config_split.config_split.live']['status'] = $_env_is_live;
 
 // Google anlytics
 // $config['google_analytics.settings']['account'] = isset($_SERVER['GA']) ? $_SERVER['GA'] : 'UA-xxxxxxx-xx';
+
+/**
+ * Enable local development services.
+ */
+$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/sprep-development.services.yml';

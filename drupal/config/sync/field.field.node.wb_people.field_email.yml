@@ -1,0 +1,19 @@
+uuid: 01fe8dc4-3b8f-4855-ba1e-2558681ace06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.wb_people
+id: node.wb_people.field_email
+field_name: field_email
+entity_type: node
+bundle: wb_people
+label: Email
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

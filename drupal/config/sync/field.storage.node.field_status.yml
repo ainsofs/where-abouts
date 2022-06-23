@@ -1,0 +1,33 @@
+uuid: a7b8f33b-2b61-456f-a099-f53cbfdabe8d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_status
+field_name: field_status
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: in-the-office
+      label: in-the-office
+    -
+      value: working-remotely
+      label: working-remotely
+    -
+      value: out-of-office
+      label: out-of-office
+    -
+      value: on-leave
+      label: on-leave
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

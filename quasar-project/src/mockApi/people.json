@@ -1,0 +1,191 @@
+{
+  "jsonapi": {
+    "version": "1.0",
+    "meta": {
+      "links": { "self": { "href": "http://jsonapi.org/format/1.0/" } }
+    }
+  },
+  "data": [
+    {
+      "type": "node--wb_people",
+      "id": "9427d272-3884-46ea-85ee-17d6e7156b5a",
+      "links": {
+        "self": {
+          "href": "http://localhost:8000/jsonapi/node/wb_people/9427d272-3884-46ea-85ee-17d6e7156b5a?resourceVersion=id%3A1"
+        }
+      },
+      "attributes": {
+        "drupal_internal__nid": 1,
+        "drupal_internal__vid": 1,
+        "langcode": "en",
+        "revision_timestamp": "2022-06-22T23:21:48+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Ainsof So\u0027o",
+        "created": "2022-06-22T23:21:34+00:00",
+        "changed": "2022-06-22T23:21:48+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "field_email": "ainsofs@sprep.org",
+        "field_status": "in-the-office"
+      },
+      "relationships": {
+        "node_type": {
+          "data": {
+            "type": "node_type--node_type",
+            "id": "697b1dd4-4136-4909-94b3-9b3f23fb4904",
+            "meta": { "drupal_internal__target_id": "wb_people" }
+          },
+          "links": {
+            "related": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/9427d272-3884-46ea-85ee-17d6e7156b5a/node_type?resourceVersion=id%3A1"
+            },
+            "self": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/9427d272-3884-46ea-85ee-17d6e7156b5a/relationships/node_type?resourceVersion=id%3A1"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": {
+            "type": "user--user",
+            "id": "491c6cc1-7c85-45a0-8043-40f7455aaf59",
+            "meta": { "drupal_internal__target_id": 1 }
+          },
+          "links": {
+            "related": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/9427d272-3884-46ea-85ee-17d6e7156b5a/revision_uid?resourceVersion=id%3A1"
+            },
+            "self": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/9427d272-3884-46ea-85ee-17d6e7156b5a/relationships/revision_uid?resourceVersion=id%3A1"
+            }
+          }
+        },
+        "uid": {
+          "data": {
+            "type": "user--user",
+            "id": "491c6cc1-7c85-45a0-8043-40f7455aaf59",
+            "meta": { "drupal_internal__target_id": 1 }
+          },
+          "links": {
+            "related": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/9427d272-3884-46ea-85ee-17d6e7156b5a/uid?resourceVersion=id%3A1"
+            },
+            "self": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/9427d272-3884-46ea-85ee-17d6e7156b5a/relationships/uid?resourceVersion=id%3A1"
+            }
+          }
+        },
+        "field_avatar": {
+          "data": {
+            "type": "file--file",
+            "id": "72ece6fc-e155-4205-8586-e7b341ec3362",
+            "meta": {
+              "alt": "Avatar for Ainsof",
+              "title": "",
+              "width": 252,
+              "height": 226,
+              "drupal_internal__target_id": 1
+            }
+          },
+          "links": {
+            "related": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/9427d272-3884-46ea-85ee-17d6e7156b5a/field_avatar?resourceVersion=id%3A1"
+            },
+            "self": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/9427d272-3884-46ea-85ee-17d6e7156b5a/relationships/field_avatar?resourceVersion=id%3A1"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "node--wb_people",
+      "id": "7e88a868-2060-45f4-ac89-705e93947797",
+      "links": {
+        "self": {
+          "href": "http://localhost:8000/jsonapi/node/wb_people/7e88a868-2060-45f4-ac89-705e93947797?resourceVersion=id%3A2"
+        }
+      },
+      "attributes": {
+        "drupal_internal__nid": 2,
+        "drupal_internal__vid": 2,
+        "langcode": "en",
+        "revision_timestamp": "2022-06-22T23:22:28+00:00",
+        "revision_log": null,
+        "status": true,
+        "title": "Billy Chan-Ting",
+        "created": "2022-06-22T23:22:16+00:00",
+        "changed": "2022-06-22T23:22:28+00:00",
+        "promote": true,
+        "sticky": false,
+        "default_langcode": true,
+        "revision_translation_affected": true,
+        "field_email": "billyc@sprep.org",
+        "field_status": "working-remotely"
+      },
+      "relationships": {
+        "node_type": {
+          "data": {
+            "type": "node_type--node_type",
+            "id": "697b1dd4-4136-4909-94b3-9b3f23fb4904",
+            "meta": { "drupal_internal__target_id": "wb_people" }
+          },
+          "links": {
+            "related": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/7e88a868-2060-45f4-ac89-705e93947797/node_type?resourceVersion=id%3A2"
+            },
+            "self": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/7e88a868-2060-45f4-ac89-705e93947797/relationships/node_type?resourceVersion=id%3A2"
+            }
+          }
+        },
+        "revision_uid": {
+          "data": {
+            "type": "user--user",
+            "id": "491c6cc1-7c85-45a0-8043-40f7455aaf59",
+            "meta": { "drupal_internal__target_id": 1 }
+          },
+          "links": {
+            "related": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/7e88a868-2060-45f4-ac89-705e93947797/revision_uid?resourceVersion=id%3A2"
+            },
+            "self": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/7e88a868-2060-45f4-ac89-705e93947797/relationships/revision_uid?resourceVersion=id%3A2"
+            }
+          }
+        },
+        "uid": {
+          "data": {
+            "type": "user--user",
+            "id": "491c6cc1-7c85-45a0-8043-40f7455aaf59",
+            "meta": { "drupal_internal__target_id": 1 }
+          },
+          "links": {
+            "related": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/7e88a868-2060-45f4-ac89-705e93947797/uid?resourceVersion=id%3A2"
+            },
+            "self": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/7e88a868-2060-45f4-ac89-705e93947797/relationships/uid?resourceVersion=id%3A2"
+            }
+          }
+        },
+        "field_avatar": {
+          "data": null,
+          "links": {
+            "related": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/7e88a868-2060-45f4-ac89-705e93947797/field_avatar?resourceVersion=id%3A2"
+            },
+            "self": {
+              "href": "http://localhost:8000/jsonapi/node/wb_people/7e88a868-2060-45f4-ac89-705e93947797/relationships/field_avatar?resourceVersion=id%3A2"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "links": {
+    "self": { "href": "http://localhost:8000/jsonapi/node/wb_people" }
+  }
+}

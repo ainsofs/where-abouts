@@ -4,6 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.wb_people.field_avatar
+    - field.field.node.wb_people.field_email
+    - field.field.node.wb_people.field_status
     - node.type.wb_people
   module:
     - user
@@ -17,4 +20,7 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-hidden: {  }
+hidden:
+  field_avatar: true
+  field_email: true
+  field_status: true

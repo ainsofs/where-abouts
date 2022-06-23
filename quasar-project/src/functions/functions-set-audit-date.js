@@ -5,6 +5,8 @@ function setAddedDate(element) {
   const curDate = date.formatDate(timeStamp, "YYYY-MM-DDTHH:mm:ss.SSSZ")
   element.dateAdded = curDate
   element.dateUpdated = curDate
+  // element.updatedBy = ''
+  // element.addedBy = ''
 
   return element
 }

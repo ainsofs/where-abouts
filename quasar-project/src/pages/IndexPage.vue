@@ -78,6 +78,8 @@ import SetStatusModal from 'components/Kanban/Modals/SetStatusModal.vue'
 
 const store = useStoreStaff()
 
+store.dReadData()
+
 const spacingCss = "col-xs-12 col-sm-6 col-lg-3"
 
 const prompt = ref(false)
