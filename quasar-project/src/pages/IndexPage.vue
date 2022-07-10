@@ -1,4 +1,62 @@
 <template>
+  <q-tabs
+    v-model="tab"
+    dense
+    class="text-grey"
+    active-color="primary"
+    indicator-color="primary"
+    align="left"
+    narrow-indicator
+  >
+    <q-tab name="all" label="All" />
+
+    <q-tab name="in-the-office" icon="work" >
+      <q-badge color="secondary" floating>2</q-badge>
+    </q-tab>
+
+    <q-tab name="working-remotely" icon="work_outline" >
+      <q-badge color="secondary" floating>200</q-badge>
+    </q-tab>
+
+    <q-tab name="out-of-office" icon="comments_disabled" >
+      <q-badge color="secondary" floating>20</q-badge>
+    </q-tab>
+
+    <q-tab name="on-leave" icon="beach_access" >
+      <q-badge color="secondary" floating>2</q-badge>
+    </q-tab>
+  </q-tabs>
+
+  <q-separator />
+
+  <q-tab-panels v-model="tab" animated>
+    <q-tab-panel name="all">
+      <div class="text-h6">All</div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </q-tab-panel>
+
+    <q-tab-panel name="in-the-office">
+      <div class="text-h6">In the Office</div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </q-tab-panel>
+
+    <q-tab-panel name="working-remotely">
+      <div class="text-h6">Working Remotely</div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </q-tab-panel>
+
+    <q-tab-panel name="out-of-office">
+      <div class="text-h6">Out of Office</div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </q-tab-panel>
+
+    <q-tab-panel name="on-leave">
+      <div class="text-h6">On Leave</div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </q-tab-panel>
+  </q-tab-panels>
+
+    <!-- old -->
   <q-page class="q-pa-md">
     <div class="q-pb-md text-weight-medium">For {{ todaysDate }}</div>
     <div class="q-pb-md text-caption">Update peoples where abouts by dragging their names to the appropriate area (desktop only). You can also click on them to select a status. </div>
@@ -82,6 +140,7 @@ store.dReadData()
 
 const spacingCss = "col-xs-12 col-sm-6 col-lg-3"
 
+const tab = ref('mails')
 const prompt = ref(false)
 const element = ref(null)
 const todaysDate = computed(() => {
