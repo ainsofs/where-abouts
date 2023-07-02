@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { api } from "boot/axios"
 import { LocalStorage } from "quasar"
+import { Buffer } from 'buffer'
 
 export const useStoreAuthentication = defineStore("useStoreAuthentication", {
   state: () => ({
@@ -37,15 +38,15 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
 
           LocalStorage.set("loggedIn", true);
           LocalStorage.set("csrf_token", response.data.csrf_token);
-          LocalStorage.set("auth_token", btoa(userId + ":" + password));
+          LocalStorage.set("auth_token", Buffer.from(userId + ":" + password).toString('base64'));
         })
         .catch((error) => {
           console.log("error", error);
         });
     },
     logoutUser() {
-      // this.loggedIn = false
-      // this.authTokens = null
+      this.loggedIn = false
+      this.authTokens = null
 
       const options = {
         headers: {

@@ -55,6 +55,11 @@ const linksList = [
     title: 'Home',
     icon: 'home',
     link: '/#'
+  },
+  {
+    title: 'Login',
+    icon: 'login',
+    link: '/#/user'
   }
 ]
 

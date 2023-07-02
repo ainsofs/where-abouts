@@ -3,7 +3,7 @@ import axios from "axios"
 import { LocalStorage } from "quasar"
 
 let config = {
-  baseURL: "http://localhost:8000",
+  baseURL: "http://api.where.docker.localhost:8000/",
 }
 const authToken = LocalStorage.getItem("auth_token")
 const csrfToken = LocalStorage.getItem("csrf_token")
