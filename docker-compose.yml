@@ -225,16 +225,15 @@ services:
     container_name: "${PROJECT_NAME}_quasar"
     working_dir: /app/quasar-project/
     labels:
-    - "traefik.http.services.${PROJECT_NAME}_node.loadbalancer.server.port=9000"
+    - "traefik.http.services.${PROJECT_NAME}_node.loadbalancer.server.port=3000"
     - "traefik.http.routers.${PROJECT_NAME}_node.rule=Host(`${PROJECT_BASE_URL}`)"
     expose:
-    - "9000"
+    - "3000"
     volumes:
     - ./:/app
     command: sh -c 'yarn install && yarn dev'
-    # ports:
-    #   - '8080:8080'
-    #   - '9000:9000'
+    ports:
+      - '3000:3000'
 
   # cypress:
   #   image: cypress/included:4.4.0
