@@ -71,7 +71,11 @@
         ],
         "build": [
             "drush site:install minimal --existing-config --db-url=mysql://root:password@mariadb:3306/drupal -y",
-            "drush cr"
+            "drush cr",
+            "drush scr web/modules/custom/where_abouts/scripts/install_default_content.php"
+        ],
+        "dev": [
+            "drush upwd admin password"
         ],
         "run_tests": [
             "mkdir -p /tmp/b2b",
