@@ -19,6 +19,7 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
   actions: {
     loginUser(userId, password) {
       const options = {
+        withCredentials: true, // Include credentials (cookies) in the request
         headers: {
           "Content-Type": "application/json",
         },
@@ -45,12 +46,10 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
         });
     },
     logoutUser() {
-      this.loggedIn = false
-      this.authTokens = null
-
       const options = {
+        withCredentials: true, // Include credentials (cookies) in the request
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       };
       const uri =
@@ -59,7 +58,9 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
       api
         .post(uri, null, options)
         .then((response) => {
-          console.log(response.data);
+          console.log('logged out')
+          this.authTokens = null
+          this.loggedIn = false
         })
         .catch((error) => {
           console.log("error", error);
