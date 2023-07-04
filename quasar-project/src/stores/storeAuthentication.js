@@ -44,6 +44,8 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
 
           this.setAxiosHeaders()
           this.setLocalStorage()
+
+          this.router.push('/')
         })
         .catch((error) => {
           console.log("error", error);
