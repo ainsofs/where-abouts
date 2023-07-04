@@ -1,8 +1,6 @@
 <template>
   <q-page padding>
-    <div class="text-h5 q-pb-md">
-      Login
-    </div>
+    <div class="text-h5 q-pb-md">Login</div>
     <form @submit.prevent="onSubmit">
       <div class="q-gutter-md col-md-6">
         <q-input rounded dense outlined v-model="formDetails.email" label="Username" />

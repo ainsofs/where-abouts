@@ -1,9 +1,8 @@
 <template>
-  <div class="rounded-borders" >
+  <div class="rounded-borders">
     <q-toolbar :class="props.headerCss">
       <q-toolbar-title class="q-pt-sm">
-        <q-btn dense round flat :icon="props.icon">
-        </q-btn>
+        <q-btn dense round flat :icon="props.icon"> </q-btn>
         {{ props.title }}
         <q-badge v-if="listLength" color="grey-14" rounded floating>
           {{ listLength }}
@@ -19,7 +18,7 @@
         :component-data="{
           tag: 'q-item',
           type: 'transition-group',
-          name: !drag ? 'flip-list' : null
+          name: !drag ? 'flip-list' : null,
         }"
         v-bind="dragOptions"
         @start="drag = true"
@@ -38,7 +37,7 @@
             <q-item-label>Show more</q-item-label>
           </q-item-section>
           <q-item-section side>
-            <q-icon name="keyboard_arrow_down"  />
+            <q-icon name="keyboard_arrow_down" />
           </q-item-section>
         </q-item>
 
@@ -48,7 +47,7 @@
             <q-item-label>Show less</q-item-label>
           </q-item-section>
           <q-item-section side>
-            <q-icon name="expand_less"  />
+            <q-icon name="expand_less" />
           </q-item-section>
         </q-item>
       </div>
@@ -68,7 +67,7 @@ const props = defineProps(['title', 'icon', 'headerCss', 'bodyCss', 'list', 'bad
 // bodyCss is unused now
 const emit = defineEmits(['add', 'remove', 'item-click'])
 
-const listLength  = computed(() => {
+const listLength = computed(() => {
   return props.list.length
 })
 
@@ -110,7 +109,7 @@ function log(evt) {
       emit('remove', evt.removed.element)
       break
     default:
-      // do nothing
+    // do nothing
   }
 }
 
@@ -119,12 +118,11 @@ const drag = ref(false)
 const dragOptions = computed(() => {
   return {
     animation: 200,
-    group: "description",
+    group: 'description',
     disabled: $q.platform.is.mobile,
-    ghostClass: "ghost"
+    ghostClass: 'ghost',
   }
 })
-
 </script>
 
 <style scoped lang="scss">
@@ -142,4 +140,3 @@ const dragOptions = computed(() => {
   background: #c8ebfb;
 }
 </style>
-

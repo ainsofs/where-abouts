@@ -11,7 +11,10 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
-    "build:pwa": "quasar build -m pwa"
+    "build:pwa": "quasar build -m pwa",
+    "fix:eslint": "eslint --ext .js,.vue src/ --fix",
+    "fix:prettier": "prettier --write --loglevel warn 'src/**/*.vue'",
+    "fix-code-style": "npm run fix:prettier && npm run fix:eslint"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
