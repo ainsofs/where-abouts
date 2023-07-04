@@ -50,14 +50,25 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
         });
     },
     logoutUser() {
+      if (!this.loggedIn) {
+          this.clearUser()
+          this.setAxiosHeaders()
+          this.setLocalStorage()
+
+          return
+      }
+
       const options = {
         withCredentials: true, // Include credentials (cookies) in the request
         headers: {
           'Content-Type': 'application/json',
         },
       };
-      const uri =
-        "/user/logout?_format=json&token=" + this.logoutToken;
+
+      // remove Authorization header because drupal doesnt like it
+      delete api.defaults.headers.common['Authorization']
+
+      const uri = "/user/logout?_format=json&token=" + this.logoutToken;
 
       api
         .post(uri, null, options)
@@ -88,7 +99,7 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
     },
     setAxiosHeaders() {
       console.log('headers set')
-      // api.defaults.headers.common['Authorization'] = 'Basic ' + this.authHeader
+      api.defaults.headers.common['Authorization'] = 'Basic ' + this.authHeader
       api.defaults.headers.common['CSRF-Token'] = this.csrfToken
     }
     // userStatus() {
