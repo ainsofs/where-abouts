@@ -5,9 +5,11 @@ import { Buffer } from 'buffer'
 
 export const useStoreAuthentication = defineStore("useStoreAuthentication", {
   state: () => ({
-    loggedIn: false,
+    loggedIn: LocalStorage.getItem("loggedIn") || false,
     isDownloaded: false,
-    authTokens: null,
+    logoutToken: LocalStorage.getItem("logout_token") || null,
+    csrfToken: LocalStorage.getItem("csrf_token") || null,
+    authHeader: LocalStorage.getItem("auth_header") || null,
   }),
 
   // getters: {
@@ -35,11 +37,13 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
         .then((response) => {
           console.log(response.data);
           this.loggedIn = true;
-          this.authTokens = response.data;
 
-          LocalStorage.set("loggedIn", true);
-          LocalStorage.set("csrf_token", response.data.csrf_token);
-          LocalStorage.set("auth_token", Buffer.from(userId + ":" + password).toString('base64'));
+          this.logoutToken = response.data.logout_token
+          this.csrfToken = response.data.csrf_token
+          this.authHeader = Buffer.from(userId + ":" + password).toString('base64')
+
+          this.setAxiosHeaders()
+          this.setLocalStorage()
         })
         .catch((error) => {
           console.log("error", error);
@@ -53,38 +57,59 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
         },
       };
       const uri =
-        "/user/logout?_format=json&token=" + this.authTokens.logout_token;
+        "/user/logout?_format=json&token=" + this.logoutToken;
 
       api
         .post(uri, null, options)
-        .then((response) => {
+        .then((/* response */) => {
           console.log('logged out')
-          this.authTokens = null
           this.loggedIn = false
-        })
-        .catch((error) => {
-          console.log("error", error);
-        });
-    },
-    userStatus() {
-      const options = {
-        headers: {
-          "Content-Type": "application/json",
-          "Set-Cookie": JSON.stringify(this.authTokens),
-        },
-      };
-      const uri = "/user/login_status?_format=json";
 
-      api
-        .get(uri, options)
-        .then((response) => {
-          console.log(response.data);
-          this.loggedIn = true;
-          this.authTokens = response.data;
+          this.clearUser()
+          this.setAxiosHeaders()
+          this.setLocalStorage()
         })
         .catch((error) => {
           console.log("error", error);
         });
     },
+    clearUser() {
+      console.log('users cleared')
+      this.logoutToken = null
+      this.csrfToken = null
+      this.authHeader = null
+    },
+    setLocalStorage() {
+      console.log('local storage set')
+      LocalStorage.set("loggedIn", this.loggedIn);
+      LocalStorage.set("logout_token", this.logoutToken);
+      LocalStorage.set("csrf_token", this.csrfToken);
+      LocalStorage.set("auth_header", this.authHeader);
+    },
+    setAxiosHeaders() {
+      console.log('headers set')
+      // api.defaults.headers.common['Authorization'] = 'Basic ' + this.authHeader
+      api.defaults.headers.common['CSRF-Token'] = this.csrfToken
+    }
+    // userStatus() {
+    //   const options = {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       "Set-Cookie": JSON.stringify(this.authTokens),
+    //     },
+    //   };
+    //   const uri = "/user/login_status?_format=json";
+
+    //   api
+    //     .get(uri, options)
+    //     .then((response) => {
+    //       console.log(response.data);
+    //       this.loggedIn = true;
+    //       this.authTokens = response.data;
+    //     })
+    //     .catch((error) => {
+    //       console.log("error", error);
+    //     });
+    // },
   },
 });

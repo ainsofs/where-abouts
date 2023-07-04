@@ -183,10 +183,6 @@ export const useStoreStaff = defineStore("useStoreStaff", {
           Accept: "application/vnd.api+json",
           "Content-Type": "application/vnd.api+json",
         },
-        auth: {
-          username: "admin",
-          password: "123",
-        },
       }
 
       let uri = "jsonapi/node/wb_people/" + id
