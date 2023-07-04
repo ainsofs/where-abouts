@@ -5,8 +5,8 @@
     </div>
     <form @submit.prevent="onSubmit">
       <div class="q-gutter-md col-md-6">
-        <q-input rounded dense outlined v-model="formDetails.email" plcaeholder="email" />
-        <q-input rounded dense outlined v-model="formDetails.password" plcaeholder="email" type="password" />
+        <q-input rounded dense outlined v-model="formDetails.email" label="Username" />
+        <q-input rounded dense outlined v-model="formDetails.password" label="Password" type="password" />
         <div class="text-right q-gutter-sm">
           <q-btn @click="logout" rounded color="secondary" label="Logout" />
           <q-btn rounded type="submit" color="primary" label="Login" />
