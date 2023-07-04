@@ -2,7 +2,7 @@
 <q-item @click="click" class="q-my-sm" clickable v-ripple>
   <q-item-section avatar>
     <q-avatar v-if="!element.avatar" color="primary" text-color="white">
-      {{ letter }}
+      <img :src="`https://api.dicebear.com/6.x/avataaars/svg?seed=${element.name}`">
     </q-avatar>
     <q-avatar v-if="element.avatar">
       <img :src="`http://localhost:8000${element.avatar}`">
@@ -26,10 +26,6 @@ import { computed } from 'vue'
 // props and emits
 const props = defineProps(['element'])
 const emit = defineEmits(['click'])
-
-const letter = computed(() => {
-  return props.element.name.substring(0,1)
-})
 
 function click() {
   emit('click')
