@@ -26,11 +26,13 @@
         "drupal/gin": "^3.0@alpha",
         "drush/drush": "^10.3",
         "vlucas/phpdotenv": "^5.1",
-        "webflo/drupal-finder": "^1.2"
+        "webflo/drupal-finder": "^1.2",
+        "drupal/jsonapi_extras": "^3.23"
     },
     "require-dev": {
         "drupal/datatables": "^2.0",
         "drupal/devel": "^4.1",
+        "drupal/restui": "^1.21",
         "drupal/views_bulk_edit": "^2.6",
         "drupal/views_bulk_operations": "^4.1",
         "mglaman/drupal-check": "^1.2",

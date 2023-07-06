@@ -11,6 +11,7 @@ module:
   datatables: 0
   devel: 0
   devel_generate: 0
+  restui: 0
   views_bulk_edit: 0
   views_bulk_operations: 0
   views_ui: 0
