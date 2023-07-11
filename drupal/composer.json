@@ -24,10 +24,10 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-recommended": "^9.1",
         "drupal/gin": "^3.0@alpha",
+        "drupal/jsonapi_extras": "^3.23",
         "drush/drush": "^10.3",
         "vlucas/phpdotenv": "^5.1",
-        "webflo/drupal-finder": "^1.2",
-        "drupal/jsonapi_extras": "^3.23"
+        "webflo/drupal-finder": "^1.2"
     },
     "require-dev": {
         "drupal/datatables": "^2.0",
@@ -74,7 +74,7 @@
         "build": [
             "drush site:install minimal --existing-config --db-url=mysql://root:password@mariadb:3306/drupal -y",
             "drush cr",
-            "drush scr web/modules/custom/where_abouts/scripts/install_default_content.php"
+            "drush scr web/modules/custom/sprep_whereabouts/scripts/install_default_content.php"
         ],
         "dev": [
             "drush upwd admin password"

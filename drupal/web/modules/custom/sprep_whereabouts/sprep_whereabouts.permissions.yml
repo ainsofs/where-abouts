@@ -1,0 +1,4 @@
+administer sprep_whereabouts configuration:
+  title: 'Administer sprep_whereabouts configuration'
+  description: 'Optional description.'
+  restrict access: true

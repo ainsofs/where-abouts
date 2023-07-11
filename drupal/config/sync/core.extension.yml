@@ -27,6 +27,7 @@ module:
   path_alias: 0
   rest: 0
   serialization: 0
+  sprep_whereabouts: 0
   system: 0
   taxonomy: 0
   text: 0
