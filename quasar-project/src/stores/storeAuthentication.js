@@ -10,13 +10,27 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
     logoutToken: LocalStorage.getItem("logout_token") || null,
     csrfToken: LocalStorage.getItem("csrf_token") || null,
     authHeader: LocalStorage.getItem("auth_header") || null,
+    user: {
+      drupal_internal__uid: 0,
+      sw_permissions: [],
+    },
+    uid: 0
   }),
 
-  // getters: {
-  //   doubleCount(state) {
-  //     return state.counter * 2
-  //   },
-  // },
+  getters: {
+    permissions(state) {
+      let permissionsObject = {
+        canEditAll: false,
+        canEditDepartment: false,
+        canEditOwn: false,
+      }
+      state.user.sw_permissions.forEach((item) => {
+        const [key, canAccess] = item.split(":")
+        permissionsObject[key] = Number(canAccess) === 1;
+      })
+      return permissionsObject
+    },
+  },
 
   actions: {
     loginUser(userId, password) {
@@ -35,17 +49,34 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
       api
         .post(uri, data, options)
         .then((response) => {
-          console.log(response.data);
+          const responseData = response.data
           this.loggedIn = true;
 
-          this.logoutToken = response.data.logout_token
-          this.csrfToken = response.data.csrf_token
+          this.logoutToken = responseData.logout_token
+          this.csrfToken = responseData.csrf_token
           this.authHeader = Buffer.from(userId + ":" + password).toString('base64')
 
           this.setAxiosHeaders()
           this.setLocalStorage()
 
-          this.router.push('/')
+          // get user permissions
+          this.uid = responseData.current_user.uid
+          const uri2 = 'jsonapi/user/user/?filter[uid]=' + this.uid
+
+          api
+            .get(uri2, options)
+            .then((response) => {
+              console.log('user info')
+              const userData = response.data.data[0]
+
+              this.user = userData.attributes
+
+              this.router.push('/')
+            })
+            .catch((error) => {
+              console.log("error", error);
+            })
+
         })
         .catch((error) => {
           console.log("error", error);
