@@ -60,8 +60,11 @@ import { useQuasar } from 'quasar'
 import { computed, ref } from 'vue'
 import draggable from 'vuedraggable'
 import KanbanItem from 'components/Kanban/KanbanItem.vue'
+import { useStoreAuthentication } from 'stores/storeAuthentication'
 
 const $q = useQuasar()
+
+const store = useStoreAuthentication()
 
 const props = defineProps(['title', 'icon', 'headerCss', 'bodyCss', 'list', 'badgeColour'])
 // bodyCss is unused now
@@ -119,7 +122,7 @@ const dragOptions = computed(() => {
   return {
     animation: 200,
     group: 'description',
-    disabled: $q.platform.is.mobile,
+    disabled: $q.platform.is.mobile || !store.permissions.canEditAll,
     ghostClass: 'ghost',
   }
 })
