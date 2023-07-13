@@ -76,18 +76,18 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
         .post(uri, null, options)
         .then((/* response */) => {
           console.log('logged out')
-          this.loggedIn = false
-
-          this.clearUser()
-          this.setAxiosHeaders()
-          this.setLocalStorage()
         })
         .catch((error) => {
           console.log("error", error);
         });
+
+      this.clearUser()
+      this.setAxiosHeaders()
+      this.setLocalStorage()
     },
     clearUser() {
       console.log('users cleared')
+      this.loggedIn = false
       this.logoutToken = null
       this.csrfToken = null
       this.authHeader = null
@@ -101,7 +101,12 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
     },
     setAxiosHeaders() {
       console.log('headers set')
-      api.defaults.headers.common['Authorization'] = 'Basic ' + this.authHeader
+      if (this.authHeader) {
+        api.defaults.headers.common['Authorization'] = 'Basic ' + this.authHeader
+      }
+      else {
+        api.defaults.headers.common['Authorization'] = ''
+      }
       api.defaults.headers.common['CSRF-Token'] = this.csrfToken
     }
     // userStatus() {

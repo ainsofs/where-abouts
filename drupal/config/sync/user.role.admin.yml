@@ -1,0 +1,14 @@
+uuid: d88baa65-17c6-4c01-8f3f-8d922037586a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.wb_people
+  module:
+    - node
+id: admin
+label: Admin
+weight: 3
+is_admin: null
+permissions:
+  - 'edit any wb_people content'

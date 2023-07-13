@@ -1,0 +1,9 @@
+uuid: d2b11436-cf12-42e4-9e0a-1c68e150d760
+langcode: en
+status: true
+dependencies: {  }
+id: assistant
+label: Assistant
+weight: 2
+is_admin: null
+permissions: {  }

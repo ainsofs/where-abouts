@@ -11,7 +11,8 @@
 
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\sprep_whereabouts\Plugin\Field\MyComputedField;
+use Drupal\field\FieldStorageConfigInterface;
+use Drupal\sprep_whereabouts\Plugin\Field\PermissionsField;
 
 /**
  * Implements hook_entity_base_field_info_alter().
@@ -19,11 +20,12 @@ use Drupal\sprep_whereabouts\Plugin\Field\MyComputedField;
 function sprep_whereabouts_entity_base_field_info_alter(&$fields, EntityTypeInterface $entity_type)
 {
   if ($entity_type->id() == 'user') {
-    $fields['my_computed_field'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('My computed field'))
-      ->setName('My computed field')
-      ->setDescription(t('My computed field description.'))
+    $fields['sw_permissions'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Permissions'))
+      ->setName('Permissions')
+      ->setDescription(t('Permissions.'))
       ->setComputed(TRUE)
-      ->setClass(MyComputedField::class);
+      ->setCardinality(FieldStorageConfigInterface::CARDINALITY_UNLIMITED)
+      ->setClass(PermissionsField::class);
   }
 }
