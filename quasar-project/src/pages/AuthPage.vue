@@ -6,7 +6,6 @@
         <q-input rounded dense outlined v-model="formDetails.email" label="Username" />
         <q-input rounded dense outlined v-model="formDetails.password" label="Password" type="password" />
         <div class="text-right q-gutter-sm">
-          <q-btn @click="logout" rounded color="secondary" label="Logout" />
           <q-btn rounded type="submit" color="primary" label="Login" />
         </div>
       </div>
@@ -29,10 +28,5 @@ const formDetails = ref({
 //functions
 function onSubmit() {
   store.loginUser(formDetails.value.email, formDetails.value.password)
-}
-function logout() {
-  // console.log('logout')
-  store.logoutUser()
-  // store.userStatus()
 }
 </script>

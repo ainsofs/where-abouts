@@ -61,11 +61,6 @@ const linksList = [
     icon: 'home',
     link: '/#',
   },
-  {
-    title: 'Login',
-    icon: 'login',
-    link: '/#/user',
-  },
 ]
 
 export default defineComponent({
