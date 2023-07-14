@@ -115,6 +115,9 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
       this.clearUser()
       this.setAxiosHeaders()
       this.setLocalStorage()
+
+      // comment out because it doesnt seem to do anything
+      // this.router.push('/#/user')
     },
     clearUser() {
       console.log('users cleared')
@@ -122,6 +125,11 @@ export const useStoreAuthentication = defineStore("useStoreAuthentication", {
       this.logoutToken = null
       this.csrfToken = null
       this.authHeader = null
+      this.user = {
+        drupal_internal__uid: 0,
+        sw_permissions: [],
+      }
+      this.uid = 0
     },
     setLocalStorage() {
       console.log('local storage set')
