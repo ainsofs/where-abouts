@@ -50,7 +50,6 @@ export const useStoreAuthentication = defineStore('useStoreAuthentication', {
         .post(uri, data, options)
         .then(response => {
           const responseData = response.data
-          this.loggedIn = true
 
           this.logoutToken = responseData.logout_token
           this.csrfToken = responseData.csrf_token
@@ -71,6 +70,7 @@ export const useStoreAuthentication = defineStore('useStoreAuthentication', {
 
               this.user = userData.attributes
 
+              this.loggedIn = true
               Notify.create('Logged in!')
               this.router.push('/')
             })
