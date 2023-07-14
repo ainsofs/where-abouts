@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title> Whereabouts </q-toolbar-title>
+        <q-toolbar-title @click="toggleLeftDrawer"> Whereabouts </q-toolbar-title>
 
         <q-btn v-if="!store.loggedIn" stretch flat label="Login" href="/#/user" />
 
@@ -16,7 +16,7 @@
           </template>
 
           <q-list>
-            <q-item clickable v-ripple @click="logout" >
+            <q-item clickable v-ripple @click="logout">
               <q-item-section avatar>
                 <q-icon name="logout" />
               </q-item-section>
@@ -30,8 +30,6 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered :width="150">
       <q-list>
-        <q-item-label header> Navigation </q-item-label>
-
         <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
       </q-list>
     </q-drawer>
@@ -88,7 +86,7 @@ export default defineComponent({
       logout() {
         store.logoutUser()
         router.push('/user')
-      }
+      },
     }
   },
 })

@@ -80,6 +80,7 @@ export const useStoreAuthentication = defineStore('useStoreAuthentication', {
         })
         .catch(error => {
           console.log('error', error)
+          Notify.create({ message: error.response.data.message, type: 'negative' })
         })
     },
     logoutUser() {
@@ -116,8 +117,6 @@ export const useStoreAuthentication = defineStore('useStoreAuthentication', {
       this.setAxiosHeaders()
       this.setLocalStorage()
 
-      // comment out because it doesnt seem to do anything
-      // this.router.push('/#/user')
       Notify.create('Logged out!')
     },
     clearUser() {
